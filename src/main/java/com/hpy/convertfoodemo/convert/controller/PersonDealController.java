@@ -16,8 +16,11 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api")
 public class PersonDealController {
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
+
+    public PersonDealController(PersonService personService) {
+        this.personService = personService;
+    }
 
     /**
      * 分页演示
@@ -38,7 +41,7 @@ public class PersonDealController {
      */
     @PostMapping("/add")
     public Result<?> addPerson(@RequestBody PersonDTO personDTO){
-        /**
+        /*
          *举例：可能这里传进来的date类型不满足条件
          *那么就需要进行对DTO进行处理
          */
