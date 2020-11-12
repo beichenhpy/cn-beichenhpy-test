@@ -1,8 +1,10 @@
 package com.hpy.convertfoodemo.convert.entity.DTO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -14,8 +16,6 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 public class PersonDTO {
-    private String username;
-    private Date birthday;
+    private String name;
     private Integer sex;
-    private String password;
 }

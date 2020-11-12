@@ -1,9 +1,13 @@
 package com.hpy.convertfoodemo.convert.entity.DO;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -15,8 +19,8 @@ import java.util.Date;
 @TableName(value = "person")
 @Accessors(chain = true)
 public class PersonDO {
+
+    private Integer id;
     private String name;
-    private Date birthday;
     private Integer sex;
-    private String password;
 }

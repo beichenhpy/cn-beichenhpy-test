@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hpy.convertfoodemo.convert.mapper.PersonMapper">
+    <select id="getPersonByJoin" resultType="com.hpy.convertfoodemo.convert.entity.DTO.PersonInfoDTO">
+        select t1.id,
+               t1.name,
+               t1.sex,
+               t2.address
+        from test.person t1
+        left join test.address t2 on t1.name = t2.name
+        limit 0,20000
+    </select>
 
 </mapper>

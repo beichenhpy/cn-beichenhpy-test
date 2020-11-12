@@ -1,9 +1,8 @@
 package com.hpy.convertfoodemo.convert.controller;
 
 import com.hpy.convertfoodemo.convert.entity.DTO.PersonDTO;
-import com.hpy.convertfoodemo.convert.entity.Result;
+import com.hpy.convertfoodemo.common.Result;
 import com.hpy.convertfoodemo.convert.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -16,23 +15,17 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api")
 public class PersonDealController {
+    /**
+     *关于依赖注入
+     *如果强制依赖最好使用此方法注入，即构造方法注入
+     * 不强制可以使用set方法注入
+     */
     private final PersonService personService;
 
     public PersonDealController(PersonService personService) {
         this.personService = personService;
     }
 
-    /**
-     * 分页演示
-     * 因为分页需要page的相关信息，因此将DTO放在service层进行包装后返回
-     * @param current 当前页
-     * @param size 显示大小
-     * @return 返回结果类
-     */
-    @GetMapping("/getList")
-    public Result<?> getList(@RequestParam Integer current,@RequestParam Integer size) {
-        return Result.ok(personService.getList(current,size));
-    }
 
     /**
      * 插入演示
@@ -42,19 +35,20 @@ public class PersonDealController {
     @PostMapping("/add")
     public Result<?> addPerson(@RequestBody PersonDTO personDTO){
         /*
-         *举例：可能这里传进来的date类型不满足条件
-         *那么就需要进行对DTO进行处理
+         *举例：
+         * 对DTO做简单的处理
+         *
          */
-        Date birthday = personDTO.getBirthday();
-        Date afterBirthday;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            afterBirthday = simpleDateFormat.parse(simpleDateFormat.format(birthday));
-        } catch (ParseException e) {
-            return Result.error(e.getMessage());
-        }
-        personDTO.setBirthday(afterBirthday);
         personService.addPerson(personDTO);
         return Result.ok();
+    }
+
+    @GetMapping("/getByJoin")
+    public Result<?> getByJoin(){
+        return Result.ok(personService.getPersonByJoin());
+    }
+    @GetMapping("/getByJava")
+    public Result<?> getByJava(){
+        return Result.ok(personService.getPersonByJava());
     }
 }

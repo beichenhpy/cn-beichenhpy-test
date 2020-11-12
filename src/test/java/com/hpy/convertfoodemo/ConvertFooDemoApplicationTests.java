@@ -13,10 +13,7 @@ class ConvertFooDemoApplicationTests {
 
     @Test
     void contextLoads() {
-        PersonDO personDO = new PersonDO().setBirthday(new Date()).setName("小明");
-        PersonDTO personDTO = new PersonDTO();
-        BeanUtils.copyProperties(personDO,personDTO);
-        System.out.println(personDTO);
+
     }
 
 }

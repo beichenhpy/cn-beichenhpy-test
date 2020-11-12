@@ -1,22 +1,18 @@
 package com.hpy.convertfoodemo.convert.service;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hpy.convertfoodemo.convert.entity.DTO.PersonDTO;
-import com.hpy.convertfoodemo.convert.entity.VO.PersonVO;
+import com.hpy.convertfoodemo.convert.entity.DTO.PersonInfoDTO;
+
+import java.util.List;
 
 /**
  * @author A51398
  */
 public interface PersonService {
 
-    /**
-     * Vo分页
-     * @param current 当前页
-     * @param size 页面大小
-     * @return VO
-     */
-    Page<PersonVO> getList(Integer current,Integer size);
 
     /**
      * 添加用户
@@ -24,4 +20,15 @@ public interface PersonService {
      */
     void addPerson(PersonDTO personDTO);
 
+    /**
+     * 通过左连接获取用户信息集合
+     * @return 用户信息集合
+     */
+    Page<PersonInfoDTO>getPersonByJoin();
+
+    /**
+     * 通过java拼接获得用户集合
+     * @return 用户信息集合
+     */
+    Page<PersonInfoDTO> getPersonByJava();
 }
