@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class StringToByte {
     public static void main(String[] args) {
-        String str1 = "000011111111111111111111";
+        String str1 = "000011110000000011110000";
         String str2 = "111111110000111100001111";
         String str3 = "0000000011110000";
         int parseInt = Integer.parseInt(str1, 2);
@@ -21,9 +21,9 @@ public class StringToByte {
         getJ(str3, parseInt3, bytes, j);
         System.out.println(Arrays.toString(bytes));
     }
-    private static int getJ(String str2, int parseInt2, byte[] bytes, int j) {
-        for (int i = 0; i < str2.length() / 8; i++) {
-            byte byte_i = (byte)((parseInt2 >> 8*((str2.length()/8)-i-1)) & 0xff);
+    private static int getJ(String str, int parseInt, byte[] bytes, int j) {
+        for (int i = 0; i < str.length() / 8; i++) {
+            byte byte_i = (byte)((parseInt >> 8*((str.length()/8)-i-1)) & 0xff);
             bytes[j] = byte_i;
             j++;
         }

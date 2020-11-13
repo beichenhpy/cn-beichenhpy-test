@@ -65,8 +65,8 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Page<PersonInfoDTO> getPersonByJava() {
         long startTime = System.currentTimeMillis();
-        IPage<PersonDO> personPage = personMapper.selectPage(new Page<>(1, 20000),null);
-        IPage<AddressDO> addressPage = addressMapper.selectPage(new Page<>(1, 20000),null);
+        IPage<PersonDO> personPage = personMapper.selectPage(new Page<>(),null);
+        IPage<AddressDO> addressPage = addressMapper.selectPage(new Page<>(),null);
         //todo 获取person信息
         List<PersonDO> personDOList = personPage.getRecords();
         List<PersonInfoDTO> personInfoDTOList = new ArrayList<>();
