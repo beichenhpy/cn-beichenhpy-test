@@ -84,9 +84,9 @@ public class PersonServiceImpl implements PersonService {
                 AddressDO addressDO = addressDOList.get(j);
                 if (addressDO.getName().equals(personInfoDTO.getName())){
                     personInfoDTO.setAddress(addressDO.getAddress());
-                    personInfoDTOList.add(personInfoDTO);
                 }
             }
+            personInfoDTOList.add(personInfoDTO);
         }
         Page<PersonInfoDTO> personInfoDTOPage = new Page<>();
         personInfoDTOPage.setRecords(personInfoDTOList);
