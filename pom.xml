@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hpy</groupId>
-    <artifactId>convert-foo-demo</artifactId>
+    <artifactId>CodeStandards</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>convert-foo-demo</name>
+    <name>CodeStandards</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
