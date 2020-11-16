@@ -1,13 +1,13 @@
-package com.hpy.demo.dbTest.entity.DTO;
+package com.hpy.demo.dbTest.modal;
 
 import lombok.Data;
 
 /**
  * @author A51398
- * 接收左连接查询的信息
+ * 实体类定义为业务模型
  */
 @Data
-public class PersonInfoDTO {
+public class PersonInfo {
     private String name;
     private Integer id;
     private Integer sex;

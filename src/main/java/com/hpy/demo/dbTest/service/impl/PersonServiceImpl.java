@@ -2,14 +2,12 @@ package com.hpy.demo.dbTest.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hpy.demo.dbTest.entity.DO.AddressDO;
-import com.hpy.demo.dbTest.entity.DO.PersonDO;
-import com.hpy.demo.dbTest.entity.DTO.PersonDTO;
-import com.hpy.demo.dbTest.entity.DTO.PersonInfoDTO;
+import com.hpy.demo.dbTest.entity.Address;
+import com.hpy.demo.dbTest.entity.Person;
+import com.hpy.demo.dbTest.modal.PersonInfo;
 import com.hpy.demo.dbTest.mapper.AddressMapper;
 import com.hpy.demo.dbTest.mapper.PersonMapper;
 import com.hpy.demo.dbTest.service.PersonService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,29 +27,13 @@ public class PersonServiceImpl implements PersonService {
     }
 
 
-    /**
-     * 主要业务实现
-     * @param personDTO 用户实体类
-     */
-    @Override
-    public void addPerson(PersonDTO personDTO) {
-        /*
-         * 可以进行对数据库的储存
-         * redis处理。。。
-         */
-
-        //转换
-        PersonDO personDO = new PersonDO();
-        BeanUtils.copyProperties(personDTO,personDO);
-        personMapper.insert(personDO);
-    }
 
 
     @Override
-    public Page<PersonInfoDTO> getPersonByJoin() {
+    public Page<PersonInfo> getPersonByJoin() {
         long startTime = System.currentTimeMillis();
-        List<PersonInfoDTO> personByJoin = personMapper.getPersonByJoin();
-        Page<PersonInfoDTO> personInfoDTOPage = new Page<>();
+        List<PersonInfo> personByJoin = personMapper.getPersonByJoin();
+        Page<PersonInfo> personInfoDTOPage = new Page<>();
         personInfoDTOPage.setRecords(personByJoin);
         long endTime = System.currentTimeMillis();
         long usedTime  = endTime - startTime;
@@ -60,34 +42,34 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Page<PersonInfoDTO> getPersonByJava() {
+    public Page<PersonInfo> getPersonByJava() {
         long startTime = System.currentTimeMillis();
-        IPage<PersonDO> personPage = personMapper.selectPage(new Page<>(),null);
-        IPage<AddressDO> addressPage = addressMapper.selectPage(new Page<>(),null);
+        IPage<Person> personPage = personMapper.selectPage(new Page<>(1,10),null);
+        IPage<Address> addressPage = addressMapper.selectPage(new Page<>(1,10),null);
         //todo 获取person信息
-        List<PersonDO> personDOList = personPage.getRecords();
-        List<PersonInfoDTO> personInfoDTOList = new ArrayList<>();
+        List<Person> personList = personPage.getRecords();
+        List<PersonInfo> personInfoList = new ArrayList<>();
        //todo 获取所有address信息
-        List<AddressDO> addressDOList = addressPage.getRecords();
-        int personSize = personDOList.size();
-        int addressSize = addressDOList.size();
+        List<Address> addressList = addressPage.getRecords();
+        int personSize = personList.size();
+        int addressSize = addressList.size();
         for (int i = 0; i < personSize ; i++) {
-            PersonDO personDO = personDOList.get(i);
-            PersonInfoDTO personInfoDTO = new PersonInfoDTO();
-            personInfoDTO.setName(personDO.getName());
-            personInfoDTO.setSex(personDO.getSex());
-            personInfoDTO.setId(personDO.getId());
+            Person person = personList.get(i);
+            PersonInfo personInfo = new PersonInfo();
+            personInfo.setName(person.getName());
+            personInfo.setSex(person.getSex());
+            personInfo.setId(person.getId());
             for (int j = 0; j < addressSize; j++) {
-                AddressDO addressDO = addressDOList.get(j);
-                if (addressDO.getName().equals(personInfoDTO.getName())){
-                    personInfoDTO.setAddress(addressDO.getAddress());
+                Address address = addressList.get(j);
+                if (address.getName().equals(personInfo.getName())){
+                    personInfo.setAddress(address.getAddress());
                     break;
                 }
             }
-            personInfoDTOList.add(personInfoDTO);
+            personInfoList.add(personInfo);
         }
-        Page<PersonInfoDTO> personInfoDTOPage = new Page<>();
-        personInfoDTOPage.setRecords(personInfoDTOList);
+        Page<PersonInfo> personInfoDTOPage = new Page<>();
+        personInfoDTOPage.setRecords(personInfoList);
         long endTime = System.currentTimeMillis();
         long usedTime  = endTime - startTime;
         System.out.println(usedTime);

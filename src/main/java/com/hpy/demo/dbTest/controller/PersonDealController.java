@@ -1,6 +1,5 @@
 package com.hpy.demo.dbTest.controller;
 
-import com.hpy.demo.dbTest.entity.DTO.PersonDTO;
 import com.hpy.demo.common.Result;
 import com.hpy.demo.dbTest.service.PersonService;
 import org.springframework.web.bind.annotation.*;
@@ -23,21 +22,6 @@ public class PersonDealController {
     }
 
 
-    /**
-     * 插入演示
-     * 传入参数需要为DTO实体
-     * 控制层可以对传入的数据进行增加或修改
-     */
-    @PostMapping("/add")
-    public Result<?> addPerson(@RequestBody PersonDTO personDTO){
-        /*
-         *举例：
-         * 对DTO做简单的处理
-         *
-         */
-        personService.addPerson(personDTO);
-        return Result.ok();
-    }
 
     @GetMapping("/getByJoin")
     public Result<?> getByJoin(){

@@ -1,4 +1,4 @@
-package com.hpy.demo.dbTest.entity.DO;
+package com.hpy.demo.dbTest.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 @Data
 @TableName(value = "person")
 @Accessors(chain = true)
-public class PersonDO {
+public class Person {
 
     private Integer id;
     private String name;
