@@ -1,11 +1,13 @@
 package com.hpy.demo.transform;
 
 /**
- * @author A51398
- * 二进制String-->16进制byte数组
- * 根据业务 byte3-byte7需要传int转2进制string
+ * @ClassName Instructions
+ * @Description TODO 指令
+ * @Author 韩鹏宇
+ * @Date 2020/11/16 21:05
+ * @Version 1.0
  */
-public class StringToByteUtil {
+public class Instructions {
     /**
      * 将所有指令拼接为64位2进制数传入str
      * 转换算法
@@ -15,7 +17,7 @@ public class StringToByteUtil {
      * @param str 字符
      * @return 字节数组
      */
-    private static byte[] getBytes(String str) {
+    public static byte[] getBytes(String str) {
         // TODO 循环，每次处理8位
         int size = str.length() / 8;
         //定义接收数组
@@ -29,9 +31,4 @@ public class StringToByteUtil {
         }
         return bytes;
     }
-
-
-
-
-
 }
