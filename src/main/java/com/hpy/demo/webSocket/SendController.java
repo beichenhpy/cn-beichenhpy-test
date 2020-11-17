@@ -27,9 +27,9 @@ public class SendController {
         simpMessagingTemplate.convertAndSend("/topic/hello", JSONUtil.toJsonStr("你好"));
     }
 
-    @MessageMapping("/app/hello")
+    @MessageMapping("/hello")
     @SendTo("/topic/hello")
-    public void foo(){
-        simpMessagingTemplate.convertAndSend("/topic/hello",JSONUtil.toJsonStr("收到你的消息了"));
+    public String foo(){
+        return JSONUtil.toJsonStr("收到你的消息了");
     }
 }

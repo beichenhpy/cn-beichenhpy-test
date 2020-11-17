@@ -14,7 +14,7 @@ function setConnected(connected) {
 
 function connect() {
     //连接ws
-    var socket = new SockJS('http://localhost:8080/jeecg-boot/websocket');
+    var socket = new SockJS('http://localhost:8080/websocket');
     stompClient = Stomp.over(socket);
     //初始化连接
     stompClient.connect({}, function (frame) {
