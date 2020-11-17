@@ -16,8 +16,11 @@ public interface PersonService {
     Page<PersonInfo>getPersonByJoin();
 
     /**
-     * 通过java拼接获得用户集合
+
      * @return 用户信息集合
+     * @author 韩鹏宇
+     * @since 2020/11/17 20:14
+     * @description: TODO
      */
     Page<PersonInfo> getPersonByJava();
 }
