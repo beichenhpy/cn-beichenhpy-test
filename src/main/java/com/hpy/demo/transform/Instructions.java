@@ -1,5 +1,7 @@
 package com.hpy.demo.transform;
 
+import java.util.Arrays;
+
 /**
  * @ClassName Instructions
  * @Description TODO 指令
@@ -30,5 +32,14 @@ public class Instructions {
             bytes[i] = tmpByte;
         }
         return bytes;
+    }
+
+    public static void main(String[] args) {
+        byte[] cSrc = {0x00,0x28,0x47,0x65,0x18,(byte) 0xfe,(byte) 0xee, 0x00,0x00,0x40,0x02,0x08,0x11,0x11,0x11,0x11,0x11,0x11,0x11,0x11};
+        byte a = cSrc[0];
+        for (int i = 0; i < cSrc.length-1; i++) {
+            a ^= cSrc[i];
+        }
+        System.out.println(a);
     }
 }

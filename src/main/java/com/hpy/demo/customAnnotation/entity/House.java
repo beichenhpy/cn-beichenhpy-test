@@ -1,9 +1,13 @@
-package com.hpy.demo.customAnnotation.entity;/**
-    *@ClassName House
-    *@Description TODO
-    *@Author 韩鹏宇
-    *@Date 2020/11/15 12:35
-    *@Version 1.0
+package com.hpy.demo.customAnnotation.entity;
+
+import lombok.Data;
+
+/**
+ * @author A51398
+ * @version 1.0
+ * @description TODO 实体类
+ * @since 2020/11/17 8:14
  */
+@Data
 public class House {
 }
