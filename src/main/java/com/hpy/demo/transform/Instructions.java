@@ -3,11 +3,11 @@ package com.hpy.demo.transform;
 import java.util.Arrays;
 
 /**
- * @ClassName Instructions
+ * 
  * @Description TODO 指令
- * @Author 韩鹏宇
- * @Date 2020/11/16 21:05
- * @Version 1.0
+ * @author 韩鹏宇
+ * @since  2020/11/16 21:05
+ * @version 1.0
  */
 public class Instructions {
     /**
