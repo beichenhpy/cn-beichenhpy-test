@@ -24,6 +24,12 @@ public class SendController {
 
     @RequestMapping("/TestSend")
     public void testSend(){
-        simpMessagingTemplate.convertAndSend("/topic/greetings", JSONUtil.toJsonStr("你好"));
+        simpMessagingTemplate.convertAndSend("/topic/hello", JSONUtil.toJsonStr("你好"));
+    }
+
+    @MessageMapping("/hello")
+    @SendTo("/topic/hello")
+    public String foo(){
+        return JSONUtil.toJsonStr("收到你的消息了");
     }
 }
