@@ -17,11 +17,13 @@ function connect() {
     var socket = new SockJS('http://localhost:8080/websocket');
     stompClient = Stomp.over(socket);
     //初始化连接
-    stompClient.connect({}, function (frame) {
+    stompClient.connect({
+        appKey:"scott"
+    }, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
         //订阅topic 每个大屏可以订阅不同的topic 前缀为topic  后缀为大屏名称 可以为screen1 例如 /topic/screen1
-        stompClient.subscribe('/topic/hello', function (greeting) {
+        stompClient.subscribe('/user/topic/hello', function (greeting) {
             showGreeting(greeting);
         });
     });
