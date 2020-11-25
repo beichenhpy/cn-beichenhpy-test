@@ -1,4 +1,4 @@
-package com.hpy.demo.guavaTest;
+package com.hpy.demo.guava;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
