@@ -1,5 +1,7 @@
 package com.hpy.demo.common.utils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,41 +16,94 @@ import java.util.List;
  */
 public class DateUtil {
     /**
+     * 日期格式化 使用threadLocal保证线程安全 默认格式为 yyyy-MM-dd 后期改成传入
+     */
+    private static final ThreadLocal<DateFormat> SDF = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd"));
+
+    /**
      * 获取某月的所有日期
+     *
      * @param date 日期
+     * @param type 类型 true时 计算今天为止的所有日期
      * @return 所有日期列表
      */
-    public List<String> getMonthFullDay(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String dateStr = sdf.format(date);
+    public static List<String> getMonthFullDay(Date date, boolean type) {
         List<String> fullDayList = new ArrayList<>();
-        int year = Integer.parseInt(dateStr.substring(0, 4));
-        int month = Integer.parseInt(dateStr.substring(5, 7));
+        Calendar cal = getCurrentMonthCal(date);
+        int count = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        Integer year = subToWhat(date, true);
+        Integer month = subToWhat(date, false);
+        String lastDay = getLastDayOfMonth(year, month);
+        if (!type) {
+            //如果想算到今天为止
+            lastDay = SDF.get().format(date);
+        }
+        //遍历此月份
+        for (int j = 0; j < count; j++) {
+            if (!SDF.get().format(cal.getTime()).equals(lastDay)) {
+                //添加日期
+                cal.add(Calendar.DAY_OF_MONTH, j == 0 ? +0 : +1);
+                fullDayList.add(SDF.get().format(cal.getTime()));
+            }
+
+        }
+        return fullDayList;
+    }
+
+    /**
+     * 获取到当月到某天为止的所有日期
+     *
+     * @param date 日期
+     * @return 返回日期集合
+     */
+    public static List<String> getMonthFullDay(Date date) {
+        return getMonthFullDay(date, false);
+    }
+
+
+    /**
+     * 获取某月最后一天
+     *
+     * @param year  年
+     * @param month 月
+     * @return 返回date
+     */
+    public static String getLastDayOfMonth(int year, int month) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.DAY_OF_MONTH, 0);
+        return SDF.get().format(cal.getTime());
+    }
+
+    /**
+     * 分割年月
+     *
+     * @param date   日期
+     * @param isYear 是否要分割年
+     * @return 返回年/月
+     */
+    public static Integer subToWhat(Date date, boolean isYear) {
+        String dateStr = SDF.get().format(date);
+        return isYear ? Integer.parseInt(dateStr.substring(0, 4)) : Integer.parseInt(dateStr.substring(5, 7));
+    }
+
+    /**
+     * 获取传入日期对应月的对应Calendar对象
+     */
+    public static Calendar getCurrentMonthCal(Date date) {
+        Integer year = subToWhat(date, true);
+        Integer month = subToWhat(date, false);
         // 所有月份从1号开始
         int day = 1;
         // 获得当前日期对象
         Calendar cal = Calendar.getInstance();
-        // 清除信息
+        // 清除默认信息
         cal.clear();
         cal.set(Calendar.YEAR, year);
-        // 1月从0开始
+        // Calendar的月从0开始的 0-11
         cal.set(Calendar.MONTH, month - 1);
         cal.set(Calendar.DAY_OF_MONTH, day);
-        int count = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-        //计算本月最后一天，这里需要获得一个新实例，因为下面循环获取日期需要上面的开始时间实例
-        Calendar cal1 = Calendar.getInstance();
-        cal1.set(Calendar.YEAR, year);
-        cal1.set(Calendar.MONTH, month);
-        cal1.set(Calendar.DAY_OF_MONTH, 0);
-        String lastDay = sdf.format(cal1.getTime());
-        for (int j = 0; j <= (count - 1); ) {
-            if (sdf.format(cal.getTime()).equals(lastDay)) {
-                break;
-            }
-            cal.add(Calendar.DAY_OF_MONTH, j == 0 ? +0 : +1);
-            j++;
-            fullDayList.add(sdf.format(cal.getTime()));
-        }
-        return fullDayList;
+        return cal;
     }
 }
