@@ -32,3 +32,8 @@ hs_err_pid*
 # IntelliJ project files
 out
 gen
+
+# theia
+.theia
+# vscode
+.vscode
