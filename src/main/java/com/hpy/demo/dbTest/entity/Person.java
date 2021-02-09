@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Person {
 
-    private Integer id;
+    private String id;
     private String name;
     private Integer sex;
 }

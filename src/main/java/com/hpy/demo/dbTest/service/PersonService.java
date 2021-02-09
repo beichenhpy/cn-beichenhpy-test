@@ -8,19 +8,9 @@ import com.hpy.demo.dbTest.modal.PersonInfo;
  * @author A51398
  */
 public interface PersonService {
-
     /**
-     * 通过左连接获取用户信息集合
-     * @return 用户信息集合
+     * person测试方法
      */
-    Page<PersonInfo>getPersonByJoin();
+    void personLog();
 
-    /**
-
-     * @return 用户信息集合
-     * @author 韩鹏宇
-     * @since 2020/11/17 20:14
-     * @description: TODO
-     */
-    Page<PersonInfo> getPersonByJava();
 }

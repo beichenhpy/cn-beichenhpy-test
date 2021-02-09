@@ -19,16 +19,8 @@ public class PersonDealController {
 
     public PersonDealController(PersonService personService) {
         this.personService = personService;
+        personService.personLog();
     }
 
 
-
-    @GetMapping("/getByJoin")
-    public Result<?> getByJoin(){
-        return Result.ok(personService.getPersonByJoin());
-    }
-    @GetMapping("/getByJava")
-    public Result<?> getByJava(){
-        return Result.ok(personService.getPersonByJava());
-    }
 }

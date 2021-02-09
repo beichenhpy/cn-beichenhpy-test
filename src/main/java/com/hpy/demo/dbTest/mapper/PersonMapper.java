@@ -13,10 +13,4 @@ import java.util.List;
 @Repository
 public interface PersonMapper extends BaseMapper<Person> {
 
-    /**
-     * 通过左连接获取对象集合
-     * @return 返回对象集合
-     */
-    public List<PersonInfo> getPersonByJoin();
-
 }
