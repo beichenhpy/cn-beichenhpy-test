@@ -1,6 +1,5 @@
 package com.hpy.demo.dbTest.controller;
 
-import com.hpy.demo.common.Result;
 import com.hpy.demo.dbTest.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +20,9 @@ public class PersonDealController {
         this.personService = personService;
         personService.personLog();
     }
-
+    @RequestMapping("/test")
+    public void test(){
+        StaticInjectTest.test();
+    }
 
 }
