@@ -1,5 +1,6 @@
 package com.hpy.demo.dbTest.controller;
 
+import com.hpy.demo.dbTest.modal.PersonInfo;
 import com.hpy.demo.dbTest.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,12 @@ public class PersonDealController {
     @RequestMapping("/test")
     public void test(){
         StaticInjectTest.test();
+    }
+
+
+    @PostMapping("/add")
+    public void add(@RequestBody PersonInfo personInfo){
+        System.out.println(personInfo);
     }
 
 }
