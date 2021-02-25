@@ -14,6 +14,10 @@ public class TimeTest {
     @TableId(value = "id")
     private String id;
 
+    /**
+     * JsonFormat可以格式化
+     * DateTimeFormat不能格式化
+     */
     @JsonFormat(timezone = "GMT+8", pattern = "HH:mm")
     private LocalTime startTime;
 }
