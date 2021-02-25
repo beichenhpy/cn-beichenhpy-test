@@ -21,10 +21,7 @@ public class PersonDealController {
         this.personService = personService;
         personService.personLog();
     }
-    @RequestMapping("/test")
-    public void test(){
-        StaticInjectTest.test();
-    }
+
 
 
     @PostMapping("/add")
