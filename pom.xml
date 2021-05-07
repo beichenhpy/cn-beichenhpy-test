@@ -5,6 +5,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>cn-beichenhpy-common</module>
+        <module>util-test</module>
+        <module>spring-level-up</module>
+        <module>stomp-websocket</module>
+        <module>mybatis-plus-demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -13,9 +17,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.beichenhpy</groupId>
-    <artifactId>CodeStandards</artifactId>
+    <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>CodeStandards</name>
+    <name>demo</name>
 
     <properties>
         <java.version>1.8</java.version>
