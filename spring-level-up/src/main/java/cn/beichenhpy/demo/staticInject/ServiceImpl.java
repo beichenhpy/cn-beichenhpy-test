@@ -1,4 +1,4 @@
-package cn.beichenhpy.basic.staticInject;
+package cn.beichenhpy.demo.staticInject;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package cn.beichenhpy.basic.bio;
+package cn.beichenhpy.basic.IO.bio;
 
 import java.io.*;
 import java.net.Socket;
