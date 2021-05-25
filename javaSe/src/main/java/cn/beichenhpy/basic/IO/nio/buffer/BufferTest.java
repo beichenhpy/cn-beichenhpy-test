@@ -55,8 +55,10 @@ public class BufferTest {
         String name = "hpy";
         buffer.put(name.getBytes(StandardCharsets.UTF_8));
         printInfo(buffer);
+        buffer.flip();
         //清空缓冲区-->position、limit恢复初始值
         buffer.clear();
+//        buffer.compact();
         printInfo(buffer);
         //get读取数据 可以get到数据，说明只是position、limit恢复初始值，然而数据还是存在的等待覆盖
         char c = (char) buffer.get();
