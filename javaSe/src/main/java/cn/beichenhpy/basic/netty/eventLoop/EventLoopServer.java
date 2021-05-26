@@ -14,6 +14,8 @@ import java.nio.charset.Charset;
  * @author beichenhpy
  * @version 0.0.1
  * @apiNote EventLoopServer description：eventLoop服务端
+ * <br> EventLoop相当于是一个Selector，EventLoopGroup相当于一个线程池，有多个Selector
+ * <br> 可以指定 作为accept事件执行的EventLoopGroup和read/write事件的EventLoopGroup
  * <br> 注意：记得关闭所有的EventLoopGroup连接 {@link EventLoopGroup#shutdownGracefully()}
  * @since 2021/5/26 4:15 下午
  */
