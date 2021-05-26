@@ -28,10 +28,10 @@ public class MutiThreadSelectorTest {
         ssChannel.configureBlocking(false);
         Selector boss = Selector.open();
         ssChannel.register(boss, SelectionKey.OP_ACCEPT);
-        //注册workers
-        Worker[] workers = new Worker[Runtime.getRuntime().availableProcessors()];
-        for (int i = 0; i < workers.length; i++) {
-            workers[i] = new Worker("worker-"+i);
+        //注册workerGroup
+        Worker[] workerGroup = new Worker[Runtime.getRuntime().availableProcessors()];
+        for (int i = 0; i < workerGroup.length; i++) {
+            workerGroup[i] = new Worker("worker-"+i);
         }
         AtomicInteger index = new AtomicInteger();
         while (true) {
@@ -45,7 +45,7 @@ public class MutiThreadSelectorTest {
                     SocketChannel acceptChannel = ssChannel.accept();
                     acceptChannel.configureBlocking(false);
                     log.debug("before --{}",acceptChannel.getRemoteAddress());
-                    workers[index.getAndIncrement() % workers.length].ready(acceptChannel);
+                    workerGroup[index.getAndIncrement() % workerGroup.length].ready(acceptChannel);
                     log.debug("after --{}",acceptChannel.getRemoteAddress());
                 }
             }
