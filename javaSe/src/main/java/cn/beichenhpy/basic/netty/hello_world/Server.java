@@ -24,8 +24,9 @@ public class Server {
                  * 2.事件组(boss/worker) eventLoop 接收事件处理
                  * 【accept】->调用初始化方法 ChannelInitializer#initChannel
                  * 【read】->调用具体的handler(ex StringDecoder)
+                 * 第一个参数 parentEventGroup 处理 accept 事件  第二个参数 childEventGroup 处理 read/write事件
                  */
-                .group(new NioEventLoopGroup())
+                .group(new NioEventLoopGroup(),new NioEventLoopGroup())
                 //3.服务器channel
                 .channel(NioServerSocketChannel.class)
                 //4.具体worker(child)实现 Handler
