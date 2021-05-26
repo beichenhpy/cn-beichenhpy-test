@@ -13,7 +13,8 @@ import java.nio.charset.Charset;
 /**
  * @author beichenhpy
  * @version 0.0.1
- * @apiNote EventLoopServer description：
+ * @apiNote EventLoopServer description：eventLoop服务端
+ * <br> 注意：记得关闭所有的EventLoopGroup连接 {@link EventLoopGroup#shutdownGracefully()}
  * @since 2021/5/26 4:15 下午
  */
 @Slf4j
