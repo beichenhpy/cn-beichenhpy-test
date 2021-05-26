@@ -7,7 +7,6 @@ import java.nio.channels.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * @author beichenhpy
@@ -51,6 +50,9 @@ public class SelectorTest {
                                     buffer.flip();
                                     System.out.println(new String(buffer.array(), 0, len));
                                     buffer.clear();
+                                }
+                                if (len == -1){
+                                    channel.close();
                                 }
                             }
                             iterator.remove();
