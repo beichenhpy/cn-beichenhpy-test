@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * mybatis-plus配置信息
  */
 @Configuration
-@MapperScan(value={"com.hpy.demo.**.mapper*"})
+@MapperScan(value={"cn.beichenhpy.mybatisplusdemo.**.mapper*"})
 public class MybatisPlusConfig {
 
     /**
