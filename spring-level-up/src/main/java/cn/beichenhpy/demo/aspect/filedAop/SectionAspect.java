@@ -2,9 +2,11 @@ package cn.beichenhpy.demo.aspect.filedAop;
 
 
 import cn.beichenhpy.common.anno.Section;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -19,12 +21,12 @@ import java.lang.reflect.Field;
 @Aspect
 @Component
 public class SectionAspect {
-    @Pointcut("execution(public * cn.beichenhpy.demo.*.*Controller.*(..))")
+    @Pointcut("execution(public * cn.beichenhpy.demo.*.*.*Controller.*(..))")
     public void logPointCut() {
 
     }
-    @Around("logPointCut()")
-    public Object around(ProceedingJoinPoint point) throws Throwable {
+    @Before(value = "logPointCut()")
+    public void before(JoinPoint point) throws Throwable {
         Object[] args = point.getArgs();
         for (Object arg : args) {
             Class<?> argClass = arg.getClass();
@@ -37,7 +39,5 @@ public class SectionAspect {
                 }
             }
         }
-        //执行方法
-        return point.proceed();
     }
 }
