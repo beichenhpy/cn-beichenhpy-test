@@ -1,13 +1,13 @@
-package cn.beichenhpy.mogodb;
+package cn.beichenhpy.mongodb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MogodbApplication {
+public class MongodbApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MogodbApplication.class, args);
+        SpringApplication.run(MongodbApplication.class, args);
     }
 
 }

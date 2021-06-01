@@ -1,10 +1,10 @@
-package cn.beichenhpy.mogodb;
+package cn.beichenhpy.mongodb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MogodbApplicationTests {
+class MongodbApplicationTests {
 
     @Test
     void contextLoads() {
