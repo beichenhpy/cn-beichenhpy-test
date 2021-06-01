@@ -9,6 +9,7 @@
         <module>spring-level-up</module>
         <module>stomp-websocket</module>
         <module>mybatis-plus-demo</module>
+        <module>netty-learn</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
