@@ -29,7 +29,7 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class ByteBufTest {
 
-    public void BufLog(ByteBuf byteBuf){
+    public static void BufLog(ByteBuf byteBuf){
         int len = byteBuf.readableBytes();
         int rows = len / 16 + (len % 15 == 0 ? 0 : 1) + 4;
         StringBuilder buf = new StringBuilder(rows * 80 * 2)
