@@ -1,4 +1,4 @@
-package cn.beichenhpy.demo.spring.ioc.bean;
+package cn.beichenhpy.demo.spring.ioc.xml.bean;
 
 /**
  * @author beichenhpy

@@ -1,9 +1,8 @@
-package cn.beichenhpy.demo.spring.ioc.test;
+package cn.beichenhpy.demo.spring.ioc.xml.test;
 
-import cn.beichenhpy.demo.spring.ioc.bean.Person;
+import cn.beichenhpy.demo.spring.ioc.xml.bean.Person;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

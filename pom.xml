@@ -10,6 +10,7 @@
         <module>stomp-websocket</module>
         <module>mybatis-plus-demo</module>
         <module>netty-learn</module>
+        <module>spring-mine</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

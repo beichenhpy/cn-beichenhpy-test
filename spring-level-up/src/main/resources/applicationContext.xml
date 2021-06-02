@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
         <!-- bean id(唯一) 和 类的全限定类名   -->
-    <bean id="person" name="personNick" class="cn.beichenhpy.demo.spring.ioc.bean.Person"/>
+    <bean id="person" name="personNick" class="cn.beichenhpy.demo.spring.ioc.xml.bean.Person"/>
 </beans>

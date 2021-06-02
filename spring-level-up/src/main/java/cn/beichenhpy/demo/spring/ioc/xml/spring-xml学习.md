@@ -49,7 +49,7 @@
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
           <!-- bean id(唯一) 和 类的全限定类名   -->
-      <bean id="person" class="cn.beichenhpy.demo.spring.ioc.bean.Person">
+      <bean id="person" class="cn.beichenhpy.demo.spring.ioc.xml.bean.Person">
   
       </bean>
   </beans>
@@ -77,10 +77,10 @@
   1. 只配置class属性
 
   ```xml
-  <bean id="person" class="cn.beichenhpy.demo.spring.ioc.bean.Person"/>
+  <bean id="person" class="cn.beichenhpy.demo.spring.ioc.xml.bean.Person"/>
   ```
 
-  - 上述配置 有id值 为：cn.beichenhpy.demo.spring.ioc.bean.Person#0
+  - 上述配置 有id值 为：cn.beichenhpy.demo.spring.ioc.xml.bean.Person#0
   - 应用场景：这个bean只使用一次，则可以省略id
 
   2. name属性
@@ -88,7 +88,7 @@
   作用：为bean设置别名
 
   ```xml
-  <bean id="person" name="personNick" class="cn.beichenhpy.demo.spring.ioc.bean.Person"/>
+  <bean id="person" name="personNick" class="cn.beichenhpy.demo.spring.ioc.xml.bean.Person"/>
   ```
 
   - 区别：
@@ -107,6 +107,4 @@
       
 
   - 相同：id和name都不能重复
-
-### 源码分析
 
