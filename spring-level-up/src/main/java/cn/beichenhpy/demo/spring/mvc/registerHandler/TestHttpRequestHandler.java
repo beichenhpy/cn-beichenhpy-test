@@ -1,4 +1,4 @@
-package cn.beichenhpy.demo.spring.mvc.beanNameAdapter;
+package cn.beichenhpy.demo.spring.mvc.registerHandler;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.HttpRequestHandler;

@@ -1,6 +1,7 @@
-package cn.beichenhpy.demo.spring.mvc.beanNameAdapter;
+package cn.beichenhpy.demo.spring.mvc.registerHandler;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ControllerTest implements Controller {
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        System.out.println("testController");
         return null;
     }
 }

@@ -1,7 +1,9 @@
-package cn.beichenhpy.demo.spring.mvc.beanNameAdapter;
+package cn.beichenhpy.demo.spring.mvc.registerHandler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author beichenhpy
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @since 2021/6/3 6:54 下午
  */
 @Controller
+@Slf4j
 public class TestAnnotation {
 
     @RequestMapping("/testAnnotation")
+    @ResponseBody
     public void test(){
-        System.out.println(1);
+        log.info("当前线程：{}",Thread.currentThread().getName());
     }
 }
