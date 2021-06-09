@@ -33,12 +33,8 @@ public class LineBasedDecodeClient {
      * @return 返回字符串
      */
     public static String getStrings(char c,int len){
-        StringBuilder sb = new StringBuilder(len + 2);
-        for (int i = 0; i < len; i++) {
-            sb.append(c);
-        }
-        sb.append("\n");
-        return sb.toString();
+        return String.valueOf(c).repeat(Math.max(0, len)) +
+                "\n";
     }
 
 
