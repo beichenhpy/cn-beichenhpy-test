@@ -1,9 +1,13 @@
 package cn.beichenhpy.demo.spring.mvc.registerHandler;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Optional;
 
 /**
  * @author beichenhpy
@@ -19,7 +23,10 @@ public class TestAnnotation {
 
     @RequestMapping("/testAnnotation")
     @ResponseBody
-    public void test(){
+    public ResponseEntity<String> test(String name){
         log.info("当前线程：{}",Thread.currentThread().getName());
+        return ResponseEntity
+                .status(HttpStatus.BAD_GATEWAY)
+                .body(Optional.ofNullable(name).orElse("unknown"));
     }
 }
