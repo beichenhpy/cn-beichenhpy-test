@@ -30,7 +30,7 @@ public class ApplicationContext {
     //bean前后置处理器
     List<BeanPostProcessor> beanPostProcessors = new CopyOnWriteArrayList<>();
     public static final String CLASS = "classes";
-    private static final String SEPARATOR = System.getProperty("file.separator");
+    private static final String SEPARATOR = File.separator;
     public static final String SINGLETON = "singleton";
     public static final String PROPERTY = "property";
 
