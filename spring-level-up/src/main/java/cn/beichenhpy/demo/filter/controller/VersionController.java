@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author beichenhpy
  * @version 0.0.1
- * @apiNote VersionController description：
+ * @apiNote VersionController description：接口版本管理测试类
  * @since 2021/6/15 21:57
  */
 @RestController
