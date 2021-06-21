@@ -1,6 +1,7 @@
 package cn.beichenhpy.basic.basicReview.optimize;
 
 import cn.hutool.core.lang.Pair;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
@@ -11,17 +12,20 @@ import java.util.*;
  * @see Pair
  * @since 2021/6/21 19:00
  */
+@Slf4j
 public class PairOptimize {
+
+    public static final String SUCCESS = "success";
 
     public static boolean originMethod(boolean show1, boolean show2, boolean show3, String progress1, String progress2, String progress3) {
         if (show1 && show2 && show3) {
-            return "success".equals(progress1) && "success".equals(progress2) && "success".equals(progress3);
+            return SUCCESS.equals(progress1) && SUCCESS.equals(progress2) && SUCCESS.equals(progress3);
         } else if (show1 && show2) {
-            return "success".equals(progress1) && "success".equals(progress2);
+            return SUCCESS.equals(progress1) && SUCCESS.equals(progress2);
         } else if (show1 && show3) {
-            return "success".equals(progress1) && "success".equals(progress3);
+            return SUCCESS.equals(progress1) && SUCCESS.equals(progress3);
         } else if (show2 && show3) {
-            return "success".equals(progress2) && "success".equals(progress3);
+            return SUCCESS.equals(progress2) && SUCCESS.equals(progress3);
         } else {
             return false;
         }
@@ -42,7 +46,7 @@ public class PairOptimize {
         }
         //现在都是show为true的 直接返回对应的&&
         return conditions.stream()
-                .map(pair -> "success".equals(pair.getValue()))
+                .map(pair -> SUCCESS.equals(pair.getValue()))
                 .reduce(true, (a, b) -> a && b);
     }
 
@@ -54,18 +58,17 @@ public class PairOptimize {
     public static boolean optimizeAnother(List<Pair<Boolean,String>> conditions){
         return conditions.stream()
                 .filter(Pair::getKey)
-                .map(pair -> "success".equals(pair.getValue()))
+                .map(pair -> SUCCESS.equals(pair.getValue()))
                 .reduce(true, (a, b) -> a && b);
     }
 
     public static void main(String[] args) {
-        boolean test = originMethod(true, true, false, "success", "success", "fail");
-        System.out.println(test);
+        boolean test = originMethod(true, true, false, SUCCESS, SUCCESS, "fail");
         ArrayList<Pair<Boolean, String>> pairs = new ArrayList<>();
-        pairs.add(new Pair<>(true, "success"));
-        pairs.add(new Pair<>(true, "success"));
+        pairs.add(new Pair<>(true, SUCCESS));
+        pairs.add(new Pair<>(true, SUCCESS));
         pairs.add(new Pair<>(false, "fail"));
         boolean test2 = optimize(pairs, 3);
-        System.out.println(test2);
+        assert test == test2;
     }
 }
