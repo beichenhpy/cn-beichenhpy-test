@@ -34,10 +34,11 @@ public class PairOptimize {
     /**
      * 通过先对show为false的remove 剩下的都是true对应的progress
      * @param conditions show+progress的组合
-     * @param originSize 原始数组大小
      * @return true/false
      */
-    public static boolean optimize(List<Pair<Boolean,String>> conditions,int originSize){
+    public static boolean optimize(List<Pair<Boolean,String>> conditions){
+        //定义初始化容量
+        final int originSize = conditions.size();
         //排除所有show为false的
         conditions.removeIf(booleanStringPair -> !booleanStringPair.getKey());
         int failShow = originSize - conditions.size();
@@ -63,12 +64,12 @@ public class PairOptimize {
     }
 
     public static void main(String[] args) {
-        boolean test = originMethod(true, true, false, SUCCESS, SUCCESS, "fail");
+        boolean test = originMethod(true, false, true, SUCCESS, SUCCESS, "fail");
         ArrayList<Pair<Boolean, String>> pairs = new ArrayList<>();
         pairs.add(new Pair<>(true, SUCCESS));
-        pairs.add(new Pair<>(true, SUCCESS));
-        pairs.add(new Pair<>(false, "fail"));
-        boolean test2 = optimize(pairs, 3);
+        pairs.add(new Pair<>(false, SUCCESS));
+        pairs.add(new Pair<>(true, "fail"));
+        boolean test2 = optimize(pairs);
         assert test == test2;
     }
 }
