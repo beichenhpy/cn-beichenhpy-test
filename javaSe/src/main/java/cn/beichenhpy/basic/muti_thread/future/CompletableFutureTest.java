@@ -5,14 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 /**
  * @author beichenhpy
  * @version 0.0.1
  * @apiNote CompletableFutureTest description：
+ * <br> CompletableFuture相关Api测试
+ * <br> thenXX相当于会把整个代码块放在同一个线程中执行
+ * <br> thenXXAsync相当于把后面的任务放在新线程中执行
+ * <br> accept相关的返回值为Void 接收参数
+ * <br> run相关的 无返回值，无参数
  * @since 2021/6/18 18:25
  */
 @Slf4j
@@ -155,4 +158,49 @@ public class CompletableFutureTest {
     }
 
 
+    /**
+     * thenAccept没有返回值，只接收参数
+     * @see CompletableFuture#thenAccept(Consumer)
+     * @see CompletableFuture#thenAcceptAsync(Consumer)
+     */
+    @Test
+    public void test6() {
+        CompletableFuture<Void> task = CompletableFuture.supplyAsync(() -> {
+            sleep(500);
+            log.info("做饭");
+            return "饭";
+        }).thenAccept(dish -> {
+            log.info("吃{}", dish);
+        });
+        task.join();
+    }
+
+
+    /**
+     * handler可以处理成功和异常 必须有返回值
+     * whenComplete 可以处理成功和异常 无返回值
+     */
+    @Test
+    public void test7(){
+        CompletableFuture<String> task = CompletableFuture.supplyAsync(() -> {
+            log.info("开启任务");
+            sleep(200);
+            return "饭";
+        }).handle((s, throwable) -> {
+            if (throwable != null) {
+                log.info("exception get");
+                return throwable.getMessage();
+            } else {
+                log.info("no error");
+                return s;
+            }
+        }).whenComplete((s, throwable) -> {
+            if (throwable != null) {
+                log.info("exception get");
+            } else {
+                log.info("no error");
+            }
+        });
+        log.info("result:{}",task.join());
+    }
 }
