@@ -179,6 +179,8 @@ public class CompletableFutureTest {
     /**
      * handler可以处理成功和异常 必须有返回值
      * whenComplete 可以处理成功和异常 无返回值
+     * @see CompletableFuture#handle(BiFunction)
+     * @see CompletableFuture#whenComplete(BiConsumer)
      */
     @Test
     public void test7(){
